@@ -9,7 +9,7 @@ export default function Presents() {
   const { header, text } = weddingData.presents
   
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-primary/5">
       <div className="max-w-3xl mx-auto text-center">
         <motion.h2 
           initial={{ opacity: 0 }}
@@ -32,7 +32,7 @@ export default function Presents() {
               ease: "easeInOut" 
             }}
           >
-            <Flower className="w-12 h-12 text-green-300" />
+            <Flower className="w-12 h-12 text-primary" />
           </motion.div>
           
           <motion.div
@@ -47,7 +47,7 @@ export default function Presents() {
               ease: "easeInOut" 
             }}
           >
-            <Sprout className="w-12 h-12 text-emerald-300" />
+            <Sprout className="w-12 h-12 text-primary" />
           </motion.div>
           
           <motion.div
@@ -62,7 +62,7 @@ export default function Presents() {
               ease: "easeInOut" 
             }}
           >
-            <Leaf className="w-12 h-12 text-lime-300" />
+            <Leaf className="w-12 h-12 text-primary" />
           </motion.div>
         </div>
         
@@ -75,14 +75,7 @@ export default function Presents() {
         >
           {text}
         </motion.p>
-        
-        <motion.div 
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ delay: 0.6, duration: 1 }}
-          viewport={{ once: true }}
-          className="w-24 h-px bg-emerald-300 mx-auto mt-8"
-        />
+  
       </div>
     </section>
   )

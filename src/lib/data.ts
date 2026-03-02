@@ -11,7 +11,7 @@ export const weddingData = {
     text2: 'Ждем вас на празднике по случаю нашей свадьбы',
   },
   calendar: {
-    header: 'Май, 2026'
+    header: 'Май 2026'
   },
   location: {
     header: 'Локация',

@@ -1,14 +1,19 @@
 // app/layout.tsx
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from "next/font/google";
+import { Courier_Prime } from 'next/font/google'
 import './globals.css'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+
+
+const courier = Courier_Prime({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-courier',
+})
+
 export const metadata: Metadata = {
-  title: 'София & Матвей | Свадьба',
+  title: 'Матвей & София | Свадьба',
   description: 'Приглашение на нашу свадьбу',
 }
 
@@ -19,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body className={`${geistSans.variable} antialiased`}>
+      <body className={`${courier.variable} antialiased font-['Courier_New',_monospace]`}>
         {children}
       </body>
     </html>
