@@ -13,7 +13,7 @@ export default function Calendar() {
   
   return (
     <section className="py-20 px-4 bg-primary/5">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-lg mx-auto">
         <motion.h2 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -23,7 +23,7 @@ export default function Calendar() {
           {header}
         </motion.h2>
         
-        <div className="grid grid-cols-7 gap-2 md:gap-4">
+        <div className="grid grid-cols-7 gap-1 md:gap-2">
           {/* Дни недели */}
           {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day, i) => (
             <div key={i} className="text-center text-sm text-gray-400 mb-2">
