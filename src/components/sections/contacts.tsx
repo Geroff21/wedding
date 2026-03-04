@@ -64,7 +64,7 @@ export default function Contacts() {
               asChild
             >
               <a 
-                href="https://t.me/your_chat" 
+                href="https://t.me/+LttBFdMv2n44NWRi" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >

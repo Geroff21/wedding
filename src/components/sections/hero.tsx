@@ -26,14 +26,14 @@ export default function Hero() {
   }, [fullText])
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden shadow-lg">
+    <section className="relative h-svh flex items-center justify-center overflow-hidden z-10 shadow-sm">
       {/* Фон */}
       <div>
         {/* Левое изображение */}
         <div 
           className="absolute inset-0 opacity-80 bg-no-repeat bg-size-[35%] z-0
             bg-[position:left_-14%_top_110%] 
-            max-sm:bg-[position:left_50%_top_110%]  max-sm:bg-size-[250px]"   /* <640px */
+            max-sm:bg-[position:left_-15%_top_110%]  max-sm:bg-size-[220px]"   /* <640px */
           style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
         />
         
@@ -41,14 +41,14 @@ export default function Hero() {
         <div 
           className="absolute inset-0 opacity-80 bg-no-repeat bg-size-[35%] z-0 rotate-180
             bg-[position:left_-14%_top_110%] 
-            max-sm:bg-[position:left_50%_top_100%] max-sm:bg-size-[250px]"
+            max-sm:bg-[position:left_-15%_top_110%] max-sm:bg-size-[220px]"
           style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
         />
       </div>
 
       {/* Контент */}
       <div className="relative z-10 text-center text-gray-900 px-4">
-        <h1 className="text-5xl md:text-8xl font-light mb-4 font-['Courier_New',_monospace]">
+        <h1 className="text-4xl md:text-8xl font-light mb-4 font-['Courier_New',_monospace]">
           {displayText}
         </h1>
 
@@ -79,7 +79,7 @@ export default function Hero() {
       {/* Стрелка вниз */}
       <motion.a
         href="#welcome"
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
+        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-white"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >

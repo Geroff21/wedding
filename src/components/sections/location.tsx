@@ -61,18 +61,18 @@ export default function Location() {
             </div>
           </motion.div>
           
-          <motion.div
-            initial={{ x: 30, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+          <div
+            // initial={{ x: 30, opacity: 0 }}
+            // whileInView={{ x: 0, opacity: 1 }}
+            // transition={{ duration: 0.6 }}
+            // viewport={{ once: true }}
             className="h-64 md:h-80 bg-gray-200 rounded-lg overflow-hidden"
           >
             {/* Здесь будет iframe с картой */}
             <div className="w-full h-full bg-gray-300 flex items-center justify-center text-gray-600">
               <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aca4c979dddc9edd52c461f88f1f988a7b9330b0f59370c86673fbbc5beda7663&amp;source=constructor" width="432" height="320" frameBorder="0"></iframe>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Декоративная линия с точечками */}

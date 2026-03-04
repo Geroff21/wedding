@@ -16,7 +16,7 @@ export default function Event() {
   ]
   
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 bg-white">
       <div className="mx-auto">
         <motion.h2 
           initial={{ opacity: 0 }}
@@ -34,7 +34,7 @@ export default function Event() {
             <div 
               className="absolute inset-0 opacity-40 bg-no-repeat bg-size-[35%] z-0
                 bg-[position:left_-20%_bottom_150%] 
-                max-sm:bg-[position:left_50%_bottom_150%]  max-sm:bg-size-[250px]"   /* <640px */
+                max-lg:bg-[position:left_-160px_bottom_0%]  max-lg:bg-size-[100%] max-lg:-scale-x-100 max-lg:opacity-20"   /* <640px */
               style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
             />
             
@@ -42,7 +42,7 @@ export default function Event() {
             <div 
               className="absolute inset-0 opacity-40 bg-no-repeat bg-size-[35%] z-0 rotate-180
                 bg-[position:left_-10%_top_0%] 
-                max-sm:bg-[position:left_50%_bottom_100%] max-sm:bg-size-[250px]"
+                max-lg:hidden"
               style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
             />
           </div>
@@ -76,10 +76,10 @@ export default function Event() {
                     ml-12 md:ml-0 md:w-1/2
                     ${isEven ? 'md:pr-12' : 'md:pl-12'}
                   `}>
-                    <div className="bg-primary/20 p-6 rounded-lg hover:shadow-md transition-shadow">
+                    <div className="bg-primary/20 p-6 rounded-lg hover:shadow-md transition-shadow max-lg:bg-primary/50">
                       <div className="flex items-center gap-3 mb-2">
-                        <Icon className="w-5 h-5 text-primary" />
-                        <span className="text-primary text-xl font-medium">{event.time}</span>
+                        <Icon className="w-5 h-5 text-primary max-lg:text-gray-900" />
+                        <span className="text-primary text-xl font-bold max-lg:text-gray-900">{event.time}</span>
                       </div>
                       <p className="text-lg text-gray-800">{event.text}</p>
                     </div>
