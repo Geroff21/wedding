@@ -11,41 +11,82 @@ export async function submitRSVP(formData: FormData) {
   const message = formData.get('message')
   const dietary = formData.get('dietary_restrictions')
   const alcoholPreferences = formData.getAll('alcohol')
+  const otherAlcohol = formData.get('other_alcohol')
   
   try {
     let alcoholText = 'Не выбрано'
+    
     if (alcoholPreferences.length > 0) {
+      // Расширенная карта соответствия для всех видов алкоголя
       const alcoholMap: Record<string, string> = {
+        // Крепкие напитки
         'vodka': '🥃 Водка',
-        'wine': '🍷 Вино',
-        'champagne': '🍾 Шампанское',
         'whiskey': '🥃 Виски',
-        'non_alcoholic': '🚫 Безалкогольное'
+        'cognac': '🥃 Коньяк',
+        'brandy': '🥃 Бренди',
+        'rum': '🥃 Ром',
+        'gin': '🥃 Джин',
+        'tequila': '🥃 Текила',
+        
+        // Вина
+        'red_dry': '🍷 Красное сухое',
+        'red_semi_sweet': '🍷 Красное полусладкое',
+        'white_dry': '🍷 Белое сухое',
+        'white_semi_dry': '🍷 Белое полусухое',
+        'white_semi_sweet': '🍷 Белое полусладкое',
+        'rose': '🍷 Розовое',
+        'champagne': '🍾 Шампанское',
+        'sparkling': '🍾 Игристое',
+        
+        // Другие напитки
+        'beer': '🍺 Пиво',
+        'cocktails': '🍸 Коктейли',
+        'liqueur': '🍹 Ликер',
+        
+        // Безалкогольное
+        'non_alcoholic': '🚫 Не пью алкоголь',
+        
+        // Другое
+        'other_custom': '✏️ Другое'
       }
       
+      // Формируем текст с алкогольными предпочтениями
       alcoholText = alcoholPreferences
-        .map(pref => alcoholMap[pref.toString()] || pref)
-        .join(', \n \t \t')
+        .map(pref => {
+          const prefStr = pref.toString()
+          return alcoholMap[prefStr] || prefStr
+        })
+        .join(', \n')
+      
+      // Если выбрано "Другое" и есть текст, добавляем его
+      if (alcoholPreferences.includes('other_custom') && otherAlcohol) {
+        alcoholText += `\n   Другое - ${otherAlcohol}`
+      }
     }
 
     const text = `
-    <b>Новая заявка RSVP</b>
+<b>Новая заявка RSVP</b>
 
-    <b>Имя:</b> ${name}
-    <b>Email:</b> ${email}
-    <b>Гостей:</b> ${guests || 1}
+<b>Имя:</b> ${name}
+<b>Email:</b> ${email}
+<b>Количество гостей:</b> ${guests || 1}
 
-    <b>Предпочтения по алкоголю:</b>
-    ${alcoholText}
+<b>Предпочтения по алкоголю:</b>
+${alcoholText}
 
-    <b>Аллергии/Особые пожелания:</b>
-    ${dietary || 'Нет'}
+<b>Аллергии и особые пожелания по еде:</b>
+${dietary || 'Не указано'}
 
-    <b>Дополнительно:</b>
-    ${message || 'Нет'}
+<b>Дополнительные пожелания:</b>
+${message || 'Не указано'}
+
+${new Date().toLocaleString('ru-RU', { 
+  day: 'numeric', 
+  month: 'long', 
+  hour: '2-digit', 
+  minute: '2-digit' 
+})}
     `.trim()
-
-    console.log('Sending to Telegram:', { name, email, guests, alcoholPreferences, dietary, message })
 
     const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: 'POST',
@@ -74,6 +115,5 @@ export async function submitRSVP(formData: FormData) {
       success: false, 
       error: 'Не удалось отправить заявку. Попробуйте позже.' 
     }
-     
   }
 }

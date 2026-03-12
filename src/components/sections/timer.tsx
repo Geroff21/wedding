@@ -5,6 +5,13 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { weddingData } from '@/lib/data'
 
+// Функция для склонения числительных
+const declensionNum = (num: number, words: [string, string, string]) => {
+  const cases = [2, 0, 1, 1, 1, 2];
+  const index = (num % 100 > 4 && num % 100 < 20) ? 2 : cases[(num % 10 < 5) ? num % 10 : 5];
+  return words[index];
+};
+
 export default function Timer() {
   const { header } = weddingData.timer
   const [timeLeft, setTimeLeft] = useState({
@@ -45,26 +52,65 @@ export default function Timer() {
         </motion.h2>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {Object.entries(timeLeft).map(([unit, value], index) => (
-            <motion.div
-              key={unit}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="p-4 rounded-lg shadow-sm bg-primary/20"
-            >
-              <div className="text-4xl md:text-5xl font-light text-gray-900 mb-2">
-                {value}
-              </div>
-              <div className="text-primary capitalize">
-                {unit === 'days' && 'дней'}
-                {unit === 'hours' && 'часов'}
-                {unit === 'minutes' && 'минут'}
-                {unit === 'seconds' && 'секунд'}
-              </div>
-            </motion.div>
-          ))}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            viewport={{ once: true }}
+            className="p-4 rounded-lg shadow-sm bg-primary/20"
+          >
+            <div className="text-4xl md:text-5xl font-light text-gray-900 mb-2">
+              {timeLeft.days}
+            </div>
+            <div className="text-primary capitalize">
+              {declensionNum(timeLeft.days, ['день', 'дня', 'дней'])}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+            className="p-4 rounded-lg shadow-sm bg-primary/20"
+          >
+            <div className="text-4xl md:text-5xl font-light text-gray-900 mb-2">
+              {timeLeft.hours}
+            </div>
+            <div className="text-primary capitalize">
+              {declensionNum(timeLeft.hours, ['час', 'часа', 'часов'])}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            viewport={{ once: true }}
+            className="p-4 rounded-lg shadow-sm bg-primary/20"
+          >
+            <div className="text-4xl md:text-5xl font-light text-gray-900 mb-2">
+              {timeLeft.minutes}
+            </div>
+            <div className="text-primary capitalize">
+              {declensionNum(timeLeft.minutes, ['минута', 'минуты', 'минут'])}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            viewport={{ once: true }}
+            className="p-4 rounded-lg shadow-sm bg-primary/20"
+          >
+            <div className="text-4xl md:text-5xl font-light text-gray-900 mb-2">
+              {timeLeft.seconds}
+            </div>
+            <div className="text-primary capitalize">
+              {declensionNum(timeLeft.seconds, ['секунда', 'секунды', 'секунд'])}
+            </div>
+          </motion.div>
         </div>
 
         {/* Декоративная линия с точечками */}

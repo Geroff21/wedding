@@ -28,6 +28,51 @@ export default function DressCode() {
         >
           {text}
         </motion.p>
+
+        {/* Палитра цветов */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap items-center justify-center gap-3 mb-12 pr-8 pl-8"
+        >
+          <div 
+            className="w-12 h-12 rounded-full shadow-md hover:scale-110 transition-transform duration-300 cursor-default border-2 border-white/20"
+            style={{ backgroundColor: '#1c1a19' }}
+            title="#1c1a19"
+          />
+          <div 
+            className="w-12 h-12 rounded-full shadow-md hover:scale-110 transition-transform duration-300 cursor-default border-2 border-white/20"
+            style={{ backgroundColor: '#281914' }}
+            title="#281914"
+          />
+          <div 
+            className="w-12 h-12 rounded-full shadow-md hover:scale-110 transition-transform duration-300 cursor-default border-2 border-white/20"
+            style={{ backgroundColor: '#4d3b31' }}
+            title="#4d3b31"
+          />
+          <div 
+            className="w-12 h-12 rounded-full shadow-md hover:scale-110 transition-transform duration-300 cursor-default border-2 border-white/20"
+            style={{ backgroundColor: '#273921' }}
+            title="#273921"
+          />
+          <div 
+            className="w-12 h-12 rounded-full shadow-md hover:scale-110 transition-transform duration-300 cursor-default border-2 border-white/20"
+            style={{ backgroundColor: '#8aa67e' }}
+            title="#8aa67e"
+          />
+          <div 
+            className="w-12 h-12 rounded-full shadow-md hover:scale-110 transition-transform duration-300 cursor-default border-2 border-white/20"
+            style={{ backgroundColor: '#e5d1c6' }}
+            title="#e5d1c6"
+          />
+          <div 
+            className="w-12 h-12 rounded-full shadow-md hover:scale-110 transition-transform duration-300 cursor-default border-2 border-white/20"
+            style={{ backgroundColor: '#a99e98' }}
+            title="#a99e98"
+          />
+        </motion.div>
     
       </div>
       {/* Декоративная линия с точечками */}
