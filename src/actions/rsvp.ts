@@ -6,7 +6,7 @@ const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID
 
 export async function submitRSVP(formData: FormData) {
   const name = formData.get('name')
-  const email = formData.get('email')
+  const phone = formData.get('phone')
   const guests = formData.get('guests')
   const message = formData.get('message')
   const dietary = formData.get('dietary_restrictions')
@@ -68,7 +68,7 @@ export async function submitRSVP(formData: FormData) {
 <b>Новая заявка RSVP</b>
 
 <b>Имя:</b> ${name}
-<b>Телефон:</b> ${email}
+<b>Телефон:</b> ${phone}
 <b>Количество гостей:</b> ${guests || 1}
 
 <b>Предпочтения по алкоголю:</b>
