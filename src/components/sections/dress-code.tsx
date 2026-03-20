@@ -35,7 +35,7 @@ export default function DressCode() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
           viewport={{ once: true }}
-          className="flex flex-wrap items-center justify-center gap-3 mb-12 pr-8 pl-8"
+          className="flex flex-wrap items-center justify-center gap-3 mb-12 pr-12 pl-12"
         >
           <div 
             className="w-12 h-12 rounded-full shadow-md hover:scale-110 transition-transform duration-300 cursor-default border-2 border-white/20"

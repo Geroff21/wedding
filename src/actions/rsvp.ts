@@ -68,7 +68,7 @@ export async function submitRSVP(formData: FormData) {
 <b>Новая заявка RSVP</b>
 
 <b>Имя:</b> ${name}
-<b>Email:</b> ${email}
+<b>Телефон:</b> ${email}
 <b>Количество гостей:</b> ${guests || 1}
 
 <b>Предпочтения по алкоголю:</b>

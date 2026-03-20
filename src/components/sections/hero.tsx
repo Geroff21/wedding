@@ -61,19 +61,6 @@ export default function Hero() {
           {date}
         </motion.p>
         
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.5, duration: 0.5 }}
-        >
-          <Button 
-            size="lg" 
-            className="bg-primary text-gray-900 hover:bg-primary/80 font-bold text-1xl"
-            asChild
-          >
-            <a href="#rsvp">Подтвердить присутствие</a>
-          </Button>
-        </motion.div>
       </div>
       
       {/* Стрелка вниз */}

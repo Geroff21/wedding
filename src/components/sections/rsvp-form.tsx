@@ -29,10 +29,11 @@ const rsvpSchema = z.object({
     .max(50, 'Имя слишком длинное')
     .regex(/^[a-zA-Zа-яА-Я\s-]+$/, 'Имя может содержать только буквы, пробелы и дефисы'),
   
-  email: z
+  phone: z
     .string()
-    .email('Введите корректный email')
-    .max(100, 'Email слишком длинный'),
+    .min(10, 'Введите корректный номер телефона (минимум 10 цифр)')
+    .max(20, 'Номер телефона слишком длинный')
+    .regex(/^[\d\s\+\(\)-]+$/, 'Номер телефона может содержать только цифры, пробелы и символы +, (, ), -'),
   
   guests: z
     .string()
@@ -110,7 +111,7 @@ export default function RsvpForm() {
     resolver: zodResolver(rsvpSchema),
     defaultValues: {
       name: '',
-      email: '',
+      phone: '',
       guests: '',
       alcohol: [],
       other_alcohol: '',
@@ -203,11 +204,15 @@ export default function RsvpForm() {
 
                     <FormField
                       control={form.control}
-                      name="email"
+                      name="phone"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input type="email" placeholder="Email" {...field} />
+                            <Input 
+                              type="tel" 
+                              placeholder="Номер телефона" 
+                              {...field} 
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
